@@ -1,4 +1,4 @@
-import { source } from '../repertoire/catalog.mjs';
+import { source } from '../repertoire/catalog.mjs?v=20260930-catalog89-icons';
 import { createCatalog, defaultChoices, sanitizeChoices, MAX_SKIPPED_SONGS } from '../repertoire/model.mjs?v=20260930-limit20';
 
 // Legacy keys are retained only to remove drafts made by earlier versions.

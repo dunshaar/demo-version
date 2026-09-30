@@ -1,8 +1,8 @@
-import { source } from './catalog.mjs';
+import { source } from './catalog.mjs?v=20260930-catalog89-icons';
 import { sortSongs, splitSongText } from '../shared/song-order.mjs';
 import { CHOICES, CHOICE_LABELS, createCatalog, countChoices, createTextList, MAX_SKIPPED_SONGS } from './model.mjs?v=20260930-limit20';
-import { readRepertoireDraft, saveRepertoireDraft } from '../shared/preferences.mjs';
-import {initRequestForm} from '../request-form.mjs?v=20260929-copy-form';
+import { readRepertoireDraft, saveRepertoireDraft } from '../shared/preferences.mjs?v=20260930-catalog89-icons';
+import {initRequestForm} from '../request-form.mjs?v=20260930-catalog89-icons';
 import {initPrivacyUI} from '../shared/privacy-ui.mjs?v=20260929-copy-form';
 
 function initRepertoire() {

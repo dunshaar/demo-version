@@ -1,6 +1,6 @@
 import {initHeroScanner} from './hero-scanner.mjs?v=20260930-speed';
 import {initPrivacyUI} from './shared/privacy-ui.mjs?v=20260929-copy-form';
-import {initRequestForm} from './request-form.mjs?v=20260929-copy-form';
+import {initRequestForm} from './request-form.mjs?v=20260930-catalog89-icons';
 initPrivacyUI();
 initRequestForm();
 // Prepare already requested photographs for a fast scroll without delaying content.
