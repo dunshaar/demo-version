@@ -1,5 +1,5 @@
 import { source } from '../repertoire/catalog.mjs';
-import { createCatalog, defaultChoices, sanitizeChoices } from '../repertoire/model.mjs';
+import { createCatalog, defaultChoices, sanitizeChoices, MAX_SKIPPED_SONGS } from '../repertoire/model.mjs?v=20260930-limit20';
 
 // Legacy keys are retained only to remove drafts made by earlier versions.
 export const PRIVACY_KEY = 'station-mir:privacy:v1';
@@ -23,7 +23,9 @@ export function createPreferenceStore({ local = null, session = null, emit = () 
   const status = () => ({ transferAvailable: false, remembered: false });
   const readDraft = () => ({ ...memory });
   function saveDraft(value) {
-    memory = sanitizeChoices(catalog, value);
+    const next = sanitizeChoices(catalog, value);
+    if (Object.values(next).filter(choice => choice === 'skip').length > MAX_SKIPPED_SONGS) throw new RangeError(`Можно отметить «Не надо» не больше ${MAX_SKIPPED_SONGS} песен`);
+    memory = next;
     emit('station:repertoire-change', { choices: readDraft(), ...status() });
     return status();
   }

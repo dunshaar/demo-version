@@ -7,9 +7,9 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Репертуар кавер-группы «Станция Мир». Выберите песни и отправьте пожелания вместе с контактами группе.">
   <title>Выбор песен | Станция Мир</title>
-  <link rel="stylesheet" href="./repertoire.css?v=20260929-copy-form-20260929-yellow-records">
+  <link rel="stylesheet" href="./repertoire.css?v=20260930-limit20">
   <link rel="stylesheet" href="/demo-version/shared/privacy.css">
-  <script type="module" src="./boot.mjs?v=20260929-copy-form"></script>
+  <script type="module" src="./boot.mjs?v=20260930-limit20"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К выбору песен</a>
@@ -21,6 +21,7 @@
     <section class="intro" aria-labelledby="page-title"><p class="eyebrow">РЕПЕРТУАР</p><h1 id="page-title">Начнём <span class="heading-accent">с музыки</span></h1><p class="repertoire-intro">Давайте начнём общение с подбора программы</p><div class="repertoire-disc" aria-hidden="true"><span><img src="/demo-version/assets/logo-full-white.webp" width="680" height="280" alt="" decoding="async"></span></div></section>
 <form id="request-form" data-repertoire="true" method="post" action="/demo-version/api/requests"><fieldset id="request-fields" disabled><legend class="sr-only">Контакты и пожелания к программе</legend>
 <div class="selection-guide"><h2>Как выбрать песни</h2><p>Пройдитесь по репертуару и отметьте песни: что хочется услышать обязательно, а что точно нет. Остальное оставляем на наш вкус и опыт</p><div class="guide-options"><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/demo-version/></svg>Хочу</strong>Обязательно услышать</p><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h12"/demo-version/></svg>Можно</strong>Оставьте как есть</p><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/demo-version/></svg>Не надо</strong>Лучше не играть</p></div></div>
+    <section class="repertoire-message" aria-labelledby="repertoire-message-title"><h2 id="repertoire-message-title">Дорогие друзья!</h2><p>Составление репертуара на Ваше мероприятия является частью нашей работы. За многие годы выступлений у нас выработалось понимание и накопленный опыт, как сделать так, чтобы ваше мероприятие было динамичным, душевным, ярким и красочным. Чем больше Вы доверитесь нам в вопросе выбора репертуара, тем лучше будет результат.</p><p class="repertoire-postscript"><strong>P.S. 😊</strong> Если на вашем мероприятии подразумевается алкоголь, то настоятельно рекомендуем перед выбором репертуара принять пару бокалов вина или другого алкогольного напитка, который вам по душе 🍷</p></section>
     <noscript><div class="notice">Для выбора песен нужен JavaScript. Вы можете <a href="/demo-version/#contact">оставить заявку на главной странице</a></div></noscript>
     <div id="load-error" class="notice" hidden>Не удалось открыть список песен. Обновите страницу или <a href="/demo-version/#contact">перейдите к заявке</a></div>
 
@@ -30,8 +31,9 @@
         <dl class="counters" aria-label="Отметки по всему репертуару">
           <div><dt>Хочу</dt><dd id="count-want">0</dd></div>
           <div><dt>Можно</dt><dd id="count-maybe">88</dd></div>
-          <div><dt>Не надо</dt><dd id="count-skip">0</dd></div>
+          <div><dt>Не надо</dt><dd><span id="count-skip">0</span><span class="counter-limit"> / 20</span></dd></div>
         </dl>
+        <p id="skip-limit-note" class="skip-limit-note" role="status">«Не надо» можно отметить не больше 20 песен</p>
 
         <a class="button button-yellow" href="#send-selection">К отправке <svg class="ui-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/demo-version/></svg></a>
         <div class="selection-actions"><button class="text-button" id="want-all-open" type="button" disabled>Все хочу</button>

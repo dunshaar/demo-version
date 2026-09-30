@@ -1,6 +1,7 @@
 import { sortSongs, splitSongText } from '../shared/song-order.mjs';
 
 export const CHOICES = Object.freeze(['want', 'maybe', 'skip']);
+export const MAX_SKIPPED_SONGS = 20;
 export const CHOICE_LABELS = Object.freeze({ want: 'Хочу', maybe: 'Можно', skip: 'Не надо' });
 export const STORAGE_KEY = 'station-mir:repertoire:v1';
 export const GROUPS = Object.freeze({ ru: 'Русские песни', foreign: 'Иностранные песни' });

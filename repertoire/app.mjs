@@ -1,6 +1,6 @@
 import { source } from './catalog.mjs';
 import { sortSongs, splitSongText } from '../shared/song-order.mjs';
-import { CHOICES, CHOICE_LABELS, createCatalog, countChoices, createTextList } from './model.mjs?v=20260929-copy-form';
+import { CHOICES, CHOICE_LABELS, createCatalog, countChoices, createTextList, MAX_SKIPPED_SONGS } from './model.mjs?v=20260930-limit20';
 import { readRepertoireDraft, saveRepertoireDraft } from '../shared/preferences.mjs';
 import {initRequestForm} from '../request-form.mjs?v=20260929-copy-form';
 import {initPrivacyUI} from '../shared/privacy-ui.mjs?v=20260929-copy-form';
@@ -19,6 +19,8 @@ function updateSelection() { saveRepertoireDraft(choices); }
 function updateCounts() {
   const counts = countChoices(catalog, choices);
   for (const choice of CHOICES) $(`#count-${choice}`).textContent = counts[choice];
+  for (const [id, row] of rows) row.querySelector('[value="skip"]').disabled = counts.skip >= MAX_SKIPPED_SONGS && choices[id] !== 'skip';
+  $('#skip-limit-note').textContent = counts.skip >= MAX_SKIPPED_SONGS ? 'Лимит 20 песен. Чтобы исключить другую, снимите одну отметку «Не надо»' : '«Не надо» можно отметить не больше 20 песен';
   $('#reset-open').disabled = counts.want + counts.skip === 0;
   $('#want-all-open').disabled = counts.want === catalog.length;
   $('#export-preview').value = createTextList(catalog, choices);
@@ -57,6 +59,7 @@ for (const [index, song] of catalog.entries()) {
     input.type = 'radio';
     input.name = song.id;
     input.value = choice;
+    if (choice === 'skip') input.setAttribute('aria-describedby', 'skip-limit-note');
     input.checked = choices[song.id] === choice;
     const text = document.createElement('span');
     text.textContent = CHOICE_LABELS[choice];
@@ -76,6 +79,7 @@ function syncControls() {
 $('#song-list').addEventListener('change', (event) => {
   const input = event.target;
   if (!(input instanceof HTMLInputElement) || !Object.hasOwn(choices, input.name) || !CHOICES.includes(input.value)) return;
+  if (input.value === 'skip' && choices[input.name] !== 'skip' && countChoices(catalog, choices).skip >= MAX_SKIPPED_SONGS) { syncControls(); return; }
   choices[input.name] = input.value;
   updateSelection();
   updateCounts();

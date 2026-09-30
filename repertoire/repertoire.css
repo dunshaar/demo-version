@@ -61,3 +61,13 @@
 @media(prefers-reduced-motion:reduce){.wordmark.home-return{transition:none}}
 
 #request-status:empty,#request-service-note:empty{display:none}
+
+/* Owner-requested repertoire introduction and twenty-song exclusion limit. */
+.repertoire-message{margin:0 0 32px;padding:24px 28px;border-left:3px solid var(--yellow);max-width:100%;font-size:15px;line-height:1.7}
+.repertoire-message h2{font-size:23px;line-height:1.25;letter-spacing:-.03em;margin-bottom:14px}
+.repertoire-message>p{max-width:960px}
+.repertoire-message .repertoire-postscript{margin-top:20px;font-weight:600}
+.counter-limit{font-size:14px;letter-spacing:0;white-space:nowrap}
+.selection-summary .skip-limit-note{grid-column:1/-1;color:#e3e7db;font-size:12px;line-height:1.6;margin:0 0 16px}
+.song-choices input[value=skip]:disabled{cursor:not-allowed}
+@media(max-width:540px){.repertoire-message{padding:6px 0 6px 17px;margin-bottom:26px;font-size:13px}.repertoire-message h2{font-size:20px}}
