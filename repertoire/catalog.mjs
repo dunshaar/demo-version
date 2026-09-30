@@ -351,5 +351,9 @@ export const source = [
   {
     "group": "Иностранные песни",
     "text": "Kiss - I was made for lovin you"
+  },
+  {
+    "group": "Русские песни",
+    "text": "Ляпис Трубецкой - Ау"
   }
 ];

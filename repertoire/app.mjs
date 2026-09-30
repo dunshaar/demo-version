@@ -89,7 +89,7 @@ function applyAll(choice) {
   choices = Object.fromEntries(catalog.map(({ id }) => [id, choice]));
   updateSelection();
   syncControls();
-  $('#export-status').textContent = choice === 'want' ? 'Все 88 позиций отмечены «Хочу». Любую отметку можно изменить' : 'Отметки сброшены. Все песни снова «Можно»';
+  $('#export-status').textContent = choice === 'want' ? 'Все 89 позиций отмечены «Хочу». Любую отметку можно изменить' : 'Отметки сброшены. Все песни снова «Можно»';
 }
 function setupConfirmation(buttonId, dialogId, returnValue, message, action) {
   const button = $(buttonId);
@@ -105,8 +105,8 @@ function setupConfirmation(buttonId, dialogId, returnValue, message, action) {
     $('.selection-summary > a[href="#send-selection"]').focus({ preventScroll: true });
   });
 }
-setupConfirmation('#reset-open', '#reset-dialog', 'reset', 'Сбросить отметки всех 88 песен? Все песни станут «Можно»', () => applyAll('maybe'));
-setupConfirmation('#want-all-open', '#want-all-dialog', 'want-all', 'Отметить все 88 позиций «Хочу»?', () => applyAll('want'));
+setupConfirmation('#reset-open', '#reset-dialog', 'reset', 'Сбросить отметки всех 89 песен? Все песни станут «Можно»', () => applyAll('maybe'));
+setupConfirmation('#want-all-open', '#want-all-dialog', 'want-all', 'Отметить все 89 позиций «Хочу»?', () => applyAll('want'));
 $('#download-list').addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob(['\uFEFF', createTextList(catalog, choices)], { type: 'text/plain;charset=utf-8' }));
   const link = document.createElement('a');
