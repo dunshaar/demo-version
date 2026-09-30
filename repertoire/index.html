@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Репертуар кавер-группы «Станция Мир». Выберите песни и отправьте пожелания вместе с контактами группе.">
+  <title>Выбор песен | Станция Мир</title>
+  <link rel="stylesheet" href="./repertoire.css?v=20260929-copy-form-20260929-yellow-records">
+  <link rel="stylesheet" href="/demo-version/shared/privacy.css">
+  <script type="module" src="./boot.mjs?v=20260929-copy-form"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К выбору песен</a>
+  <header class="page-header wrap">
+    <a class="wordmark home-return" href="/demo-version/" aria-label="На главную, Станция Мир"><svg class="ui-icon return-arrow" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/demo-version/></svg><span class="home-return-copy"><span class="home-return-title">СТАНЦИЯ <b>МИР</b></span><span class="home-return-label">На главную</span></span></a>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="intro" aria-labelledby="page-title"><p class="eyebrow">РЕПЕРТУАР</p><h1 id="page-title">Начнём <span class="heading-accent">с музыки</span></h1><p class="repertoire-intro">Давайте начнём общение с подбора программы</p><div class="repertoire-disc" aria-hidden="true"><span><img src="/demo-version/assets/logo-full-white.webp" width="680" height="280" alt="" decoding="async"></span></div></section>
+<form id="request-form" data-repertoire="true" method="post" action="/demo-version/api/requests"><fieldset id="request-fields" disabled><legend class="sr-only">Контакты и пожелания к программе</legend>
+<div class="selection-guide"><h2>Как выбрать песни</h2><p>Пройдитесь по репертуару и отметьте песни: что хочется услышать обязательно, а что точно нет. Остальное оставляем на наш вкус и опыт</p><div class="guide-options"><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/demo-version/></svg>Хочу</strong>Обязательно услышать</p><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h12"/demo-version/></svg>Можно</strong>Оставьте как есть</p><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/demo-version/></svg>Не надо</strong>Лучше не играть</p></div></div>
+    <noscript><div class="notice">Для выбора песен нужен JavaScript. Вы можете <a href="/demo-version/#contact">оставить заявку на главной странице</a></div></noscript>
+    <div id="load-error" class="notice" hidden>Не удалось открыть список песен. Обновите страницу или <a href="/demo-version/#contact">перейдите к заявке</a></div>
+
+    <section class="selection-layout" aria-labelledby="selection-title">
+      <aside class="selection-summary">
+        <h2 id="selection-title">Ваш выбор</h2>
+        <dl class="counters" aria-label="Отметки по всему репертуару">
+          <div><dt>Хочу</dt><dd id="count-want">0</dd></div>
+          <div><dt>Можно</dt><dd id="count-maybe">88</dd></div>
+          <div><dt>Не надо</dt><dd id="count-skip">0</dd></div>
+        </dl>
+
+        <a class="button button-yellow" href="#send-selection">К отправке <svg class="ui-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/demo-version/></svg></a>
+        <div class="selection-actions"><button class="text-button" id="want-all-open" type="button" disabled>Все хочу</button>
+        <button class="text-button" id="reset-open" type="button" disabled>Сбросить отметки</button></div>
+        <p class="storage-note" id="storage-status">Выбор действует только на открытой странице. После обновления отметки сбросятся</p>
+      </aside>
+
+      <div class="catalog">
+        <div class="list-heading"><p id="results-count" role="status">Загружаем репертуар…</p><span class="desktop-label">ВАШЕ ПРЕДПОЧТЕНИЕ</span></div>
+        <ol id="song-list" class="song-list" aria-label="Песни и музыкальные предпочтения"></ol>
+
+      </div>
+    </section>
+
+    <section id="send-selection" class="send-selection" aria-labelledby="send-title"><div><h2 id="send-title">Отправить пожелания</h2><p>Контакты и выбранные песни придут группе одной заявкой</p></div><div class="send-controls"><div class="repertoire-contact-fields"><div class="request-identity"><label>Ваше имя<input name="name" autocomplete="given-name" maxlength="100" placeholder="Как к вам обращаться" required></label><label>Номер телефона<input id="request-contact" name="contact" type="tel" autocomplete="tel" inputmode="tel" maxlength="18" placeholder="+7 (999) 123-45-67" required></label><label>Дата <span>(если известна)</span><input name="date" type="date"></label></div><label class="preferred-channel-label">Как удобнее связаться <span>(необязательно)</span><select id="preferred-channel" name="preferredChannel"><option value="">Без предпочтений</option><option value="phone">Позвонить</option><option value="whatsapp">WhatsApp</option><option value="telegram">Telegram</option><option value="max">MAX</option></select></label></div><label class="check-label consent-check"><input type="checkbox" name="personalData" required><span>Даю <a href="/demo-version/legal/consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a>. <a href="/demo-version/legal/privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a></span></label><div class="form-trap" aria-hidden="true"><label>Ваш сайт<input name="website" autocomplete="off" tabindex="-1"></label></div><button id="request-submit" class="button button-yellow" type="submit">Отправить заявку <svg class="ui-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/demo-version/></svg></button></div></section>
+</fieldset><p id="request-status" class="form-status" role="status" aria-live="polite">Проверяем доступность отправки…</p><div id="request-retry" hidden><button class="text-link" type="button" id="retry-request">Повторить отправку</button></div><p id="request-service-note" class="form-note"></p><noscript><p>Для отправки нужен JavaScript. <a href="https://t.me/station_coverband">Написать группе</a></p></noscript></form><details class="export-details"><summary>Сохранить копию списка себе</summary><div class="share-controls"><div class="export-buttons"><button class="button button-outline" id="download-list" type="button" disabled>Скачать TXT</button><button class="button button-outline" id="copy-list" type="button" disabled>Скопировать текст</button></div><p id="export-status" class="export-status" role="status" aria-live="polite"></p><details id="text-preview"><summary>Показать текст списка</summary><label class="sr-only" for="export-preview">Ваш список песен</label><textarea id="export-preview" rows="10" readonly spellcheck="false"></textarea></details></div></details>
+  </main>
+
+  <footer class="page-footer wrap"><a class="footer-home-return" href="/demo-version/"><svg class="ui-icon return-arrow" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/demo-version/></svg>На главную, Станция Мир</a><nav aria-label="Документы и настройки"><a href="/demo-version/legal/privacy.html">Конфиденциальность</a><a href="/demo-version/legal/consent.html">Согласие на обработку данных</a><a href="/demo-version/legal/cookies.html">Cookie</a><button type="button" data-cookie-settings>Настройки cookie</button></nav></footer>
+
+  <dialog id="reset-dialog" aria-labelledby="reset-title" aria-describedby="reset-description">
+    <h2 id="reset-title">Сбросить все отметки?</h2><p id="reset-description">Все 88 позиций снова станут «Можно»</p>
+    <form method="dialog" class="dialog-actions"><button class="button button-outline" value="cancel" autofocus>Оставить выбор</button><button class="button button-yellow" value="reset">Сбросить</button></form>
+  </dialog>
+  <dialog id="want-all-dialog" aria-labelledby="want-all-title" aria-describedby="want-all-description">
+    <h2 id="want-all-title">Отметить всё как «Хочу»?</h2><p id="want-all-description">Все 88 позиций получат «Хочу». Потом любую отметку можно поменять</p>
+    <form method="dialog" class="dialog-actions"><button class="button button-outline" value="cancel" autofocus>Оставить как есть</button><button class="button button-yellow" value="want-all">Да, все хочу</button></form>
+  </dialog>
+</body>
+</html>
