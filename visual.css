@@ -171,9 +171,9 @@ h2{text-wrap:balance}.hero h1{letter-spacing:-.06em}.hero-intro{max-width:445px}
 #request-status:empty,#request-service-note:empty{display:none}
 
 /* The record leaves the viewport only on the right; its full top/bottom arc stays visible. */
-.repertoire-vinyl{min-width:0;width:100%;align-self:center}
-.repertoire-vinyl-window{width:calc(100% + var(--gutter) + max(0px, (100vw - 1520px)/2));overflow:hidden;isolation:isolate}
-.repertoire-vinyl-art{display:block;width:100%;max-width:680px;height:auto;margin-left:auto;overflow:hidden}
+.repertoire-vinyl{--vinyl-bleed:calc(var(--gutter) + max(0px, (100vw - 1520px)/2));min-width:0;width:100%;align-self:center}
+.repertoire-vinyl-window{width:calc(100% + var(--vinyl-bleed));overflow:hidden;isolation:isolate}
+.repertoire-vinyl-art{display:block;width:calc(100% - var(--vinyl-bleed));max-width:none;height:auto;margin-left:auto;overflow:hidden}
 .repertoire-vinyl-grooves{stroke-width:.7;opacity:.15}
 .repertoire-vinyl-spin{transform-origin:0 0;animation:repertoire-vinyl-turn 48s linear infinite}
 .repertoire-vinyl-spin text{fill:var(--paper);font-family:Manrope,Arial,sans-serif;letter-spacing:.1px}
@@ -188,5 +188,9 @@ h2{text-wrap:balance}.hero h1{letter-spacing:-.06em}.hero-intro{max-width:445px}
 /* The repertoire record keeps its continuous motion independently of the site toggle. */
 .motion-paused .repertoire-vinyl-spin{animation-play-state:running!important}
 
-.repertoire-vinyl-track-inner .repertoire-vinyl-title{font-size:20px}
-.repertoire-vinyl-track-inner .repertoire-vinyl-artist{font-size:11px}
+/* On mobile the disc is 1.5 times the preceding version, while its right
+   cut remains at the viewport edge. The SVG reserves room for the whole arc. */
+@media(max-width:540px){
+ .repertoire-teaser{row-gap:12px}
+ .repertoire-vinyl-art{width:114.705882353%;margin-left:-14.705882353%}
+}
