@@ -51,3 +51,22 @@ function updateScroll(){frame=0;const height=document.documentElement.scrollHeig
 addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(updateScroll);},{passive:true});addEventListener('resize',()=>{if(!frame)frame=requestAnimationFrame(updateScroll);});updateScroll();
 // Old bookmarked chooser links now open the standalone repertoire page.
 if(location.hash==='#choose-songs')location.replace('/demo-version/repertoire/');
+
+// Update playback rate instead of duration to preserve the record's current angle.
+const vinylSpeed=$('#vinyl-speed'),vinylDisc=$('.repertoire-vinyl-spin');
+if(vinylSpeed&&vinylDisc){
+ const control=vinylSpeed.closest('.vinyl-speed');
+ function updateVinylSpeed(){
+  const rate=Number(vinylSpeed.value)/100;
+  vinylSpeed.setAttribute('aria-valuetext',`${vinylSpeed.value} процентов`);
+  vinylSpeed.disabled=systemMotion.matches;
+  vinylSpeed.title=systemMotion.matches?'Движение уменьшено в настройках устройства':'Скорость вращения винила';
+  if(!systemMotion.matches){
+   const animation=vinylDisc.getAnimations().find(item=>item.animationName==='repertoire-vinyl-turn');
+   animation?.updatePlaybackRate(rate);
+  }
+ }
+ vinylSpeed.addEventListener('input',updateVinylSpeed);
+ systemMotion.addEventListener('change',updateVinylSpeed);
+ control.hidden=false;updateVinylSpeed();
+}
