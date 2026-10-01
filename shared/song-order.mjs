@@ -30,10 +30,10 @@ function compareWords(left, right) {
 }
 export function compareSongs(left, right) {
   const a = splitSongText(left.text), b = splitSongText(right.text);
-  const byTitle = compareWords(a.title, b.title);
-  if (byTitle) return byTitle;
   const byArtist = compareWords(a.artist, b.artist);
   if (byArtist) return byArtist;
+  const byTitle = compareWords(a.title, b.title);
+  if (byTitle) return byTitle;
   const aId = String(left.id ?? ''), bId = String(right.id ?? '');
   return aId < bId ? -1 : aId > bId ? 1 : 0;
 }

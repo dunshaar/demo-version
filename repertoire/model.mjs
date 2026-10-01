@@ -1,4 +1,4 @@
-import { sortSongs, splitSongText } from '../shared/song-order.mjs';
+import { sortSongs, splitSongText } from '../shared/song-order.mjs?v=20261001-artist-order';
 
 export const CHOICES = Object.freeze(['want', 'maybe', 'skip']);
 export const MAX_SKIPPED_SONGS = 20;

@@ -1,6 +1,6 @@
-import {previewFormConfig} from './preview-config.mjs?v=20261001-catalog110-recs';
+import {previewFormConfig} from './preview-config.mjs?v=20261001-artist-order';
 import {attachPhoneMask} from './phone-input.mjs';
-import {readRepertoireDraft} from './shared/preferences.mjs?v=20261001-catalog110-recs';
+import {readRepertoireDraft} from './shared/preferences.mjs?v=20261001-artist-order';
 export async function initRequestForm(){
  const form=document.querySelector('#request-form');if(!form)return;
  const fields=document.querySelector('#request-fields'),button=document.querySelector('#request-submit'),status=document.querySelector('#request-status'),note=document.querySelector('#request-service-note'),retry=document.querySelector('#request-retry');

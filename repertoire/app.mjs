@@ -1,8 +1,8 @@
-import { source } from './catalog.mjs?v=20261001-catalog110-recs';
-import { sortSongs, splitSongText } from '../shared/song-order.mjs';
-import { CHOICES, CHOICE_LABELS, createCatalog, countChoices, createTextList, MAX_SKIPPED_SONGS } from './model.mjs?v=20261001-catalog110-recs';
-import { readRepertoireDraft, saveRepertoireDraft } from '../shared/preferences.mjs?v=20261001-catalog110-recs';
-import {initRequestForm} from '../request-form.mjs?v=20261001-catalog110-recs';
+import { source } from './catalog.mjs?v=20261001-artist-order';
+import { sortSongs, splitSongText } from '../shared/song-order.mjs?v=20261001-artist-order';
+import { CHOICES, CHOICE_LABELS, createCatalog, countChoices, createTextList, MAX_SKIPPED_SONGS } from './model.mjs?v=20261001-artist-order';
+import { readRepertoireDraft, saveRepertoireDraft } from '../shared/preferences.mjs?v=20261001-artist-order';
+import {initRequestForm} from '../request-form.mjs?v=20261001-artist-order';
 import {initPrivacyUI} from '../shared/privacy-ui.mjs?v=20260929-copy-form';
 
 function initRepertoire() {
@@ -40,18 +40,18 @@ for (const [index, song] of catalog.entries()) {
   const heading = document.createElement('h3');
   heading.id = `${song.id}-title`;
   const {artist, title} = splitSongText(song.text);
-  heading.textContent = title;
+  heading.textContent = artist;
   const songLabel = [artist, title].filter(Boolean).join(': ');
   heading.setAttribute('aria-label', songLabel + (song.recommended ? ', рекомендует группа' : ''));
+  const track = document.createElement('span');
+  track.className = 'song-title';
+  track.textContent = title;
   if (song.recommended) {
     row.dataset.recommended = 'true';
-    heading.title = 'Рекомендует группа';
-    heading.insertAdjacentHTML('beforeend', "<svg class=\"recommendation-heart\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z\"/demo-version/></svg>");
+    track.title = 'Рекомендует группа';
+    track.insertAdjacentHTML('beforeend', "<svg class=\"recommendation-heart\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z\"/demo-version/></svg>");
   }
-  const performer = document.createElement('span');
-  performer.className = 'song-artist';
-  performer.textContent = artist;
-  info.append(number, performer, heading);
+  info.append(number, heading, track);
   const fieldset = document.createElement('fieldset');
   fieldset.className = 'song-choices';
   const legend = document.createElement('legend');
