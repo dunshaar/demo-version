@@ -1,8 +1,8 @@
-import { source } from './catalog.mjs?v=20260930-catalog89-icons';
+import { source } from './catalog.mjs?v=20261001-catalog110-recs';
 import { sortSongs, splitSongText } from '../shared/song-order.mjs';
-import { CHOICES, CHOICE_LABELS, createCatalog, countChoices, createTextList, MAX_SKIPPED_SONGS } from './model.mjs?v=20260930-limit20';
-import { readRepertoireDraft, saveRepertoireDraft } from '../shared/preferences.mjs?v=20260930-catalog89-icons';
-import {initRequestForm} from '../request-form.mjs?v=20260930-catalog89-icons';
+import { CHOICES, CHOICE_LABELS, createCatalog, countChoices, createTextList, MAX_SKIPPED_SONGS } from './model.mjs?v=20261001-catalog110-recs';
+import { readRepertoireDraft, saveRepertoireDraft } from '../shared/preferences.mjs?v=20261001-catalog110-recs';
+import {initRequestForm} from '../request-form.mjs?v=20261001-catalog110-recs';
 import {initPrivacyUI} from '../shared/privacy-ui.mjs?v=20260929-copy-form';
 
 function initRepertoire() {
@@ -42,7 +42,12 @@ for (const [index, song] of catalog.entries()) {
   const {artist, title} = splitSongText(song.text);
   heading.textContent = title;
   const songLabel = [artist, title].filter(Boolean).join(': ');
-  heading.setAttribute('aria-label', songLabel);
+  heading.setAttribute('aria-label', songLabel + (song.recommended ? ', рекомендует группа' : ''));
+  if (song.recommended) {
+    row.dataset.recommended = 'true';
+    heading.title = 'Рекомендует группа';
+    heading.insertAdjacentHTML('beforeend', "<svg class=\"recommendation-heart\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z\"/demo-version/></svg>");
+  }
   const performer = document.createElement('span');
   performer.className = 'song-artist';
   performer.textContent = artist;
@@ -89,7 +94,7 @@ function applyAll(choice) {
   choices = Object.fromEntries(catalog.map(({ id }) => [id, choice]));
   updateSelection();
   syncControls();
-  $('#export-status').textContent = choice === 'want' ? 'Все 89 позиций отмечены «Хочу». Любую отметку можно изменить' : 'Отметки сброшены. Все песни снова «Можно»';
+  $('#export-status').textContent = choice === 'want' ? 'Все 110 позиций отмечены «Хочу». Любую отметку можно изменить' : 'Отметки сброшены. Все песни снова «Можно»';
 }
 function setupConfirmation(buttonId, dialogId, returnValue, message, action) {
   const button = $(buttonId);
@@ -105,8 +110,8 @@ function setupConfirmation(buttonId, dialogId, returnValue, message, action) {
     $('.selection-summary > a[href="#send-selection"]').focus({ preventScroll: true });
   });
 }
-setupConfirmation('#reset-open', '#reset-dialog', 'reset', 'Сбросить отметки всех 89 песен? Все песни станут «Можно»', () => applyAll('maybe'));
-setupConfirmation('#want-all-open', '#want-all-dialog', 'want-all', 'Отметить все 89 позиций «Хочу»?', () => applyAll('want'));
+setupConfirmation('#reset-open', '#reset-dialog', 'reset', 'Сбросить отметки всех 110 песен? Все песни станут «Можно»', () => applyAll('maybe'));
+setupConfirmation('#want-all-open', '#want-all-dialog', 'want-all', 'Отметить все 110 позиций «Хочу»?', () => applyAll('want'));
 $('#download-list').addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob(['\uFEFF', createTextList(catalog, choices)], { type: 'text/plain;charset=utf-8' }));
   const link = document.createElement('a');

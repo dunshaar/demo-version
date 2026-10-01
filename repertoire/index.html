@@ -8,9 +8,9 @@
   <meta name="description" content="Репертуар кавер-группы «Станция Мир». Выберите песни и отправьте пожелания вместе с контактами группе.">
   <title>Выбор песен | Станция Мир</title>
   <link rel="icon" type="image/png" sizes="512x512" href="/demo-version/assets/logo-ava-512.png?v=20260930-catalog89-icons"><link rel="apple-touch-icon" href="/demo-version/assets/logo-ava-512.png?v=20260930-catalog89-icons">
-  <link rel="stylesheet" href="./repertoire.css?v=20260930-vinyl-spin">
+  <link rel="stylesheet" href="./repertoire.css?v=20261001-catalog110-recs">
   <link rel="stylesheet" href="/demo-version/shared/privacy.css">
-  <script type="module" src="./boot.mjs?v=20260930-catalog89-icons"></script>
+  <script type="module" src="./boot.mjs?v=20261001-catalog110-recs"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К выбору песен</a>
@@ -22,7 +22,7 @@
     <section class="intro" aria-labelledby="page-title"><p class="eyebrow">РЕПЕРТУАР</p><h1 id="page-title">Начнём <span class="heading-accent">с музыки</span></h1><p class="repertoire-intro">Давайте начнём общение с подбора программы</p><div class="repertoire-disc" aria-hidden="true"><span><img src="/demo-version/assets/logo-full-white.webp" width="680" height="280" alt="" decoding="async"></span></div></section>
 <form id="request-form" data-repertoire="true" method="post" action="/demo-version/api/requests"><fieldset id="request-fields" disabled><legend class="sr-only">Контакты и пожелания к программе</legend>
 <div class="selection-guide"><h2>Как выбрать песни</h2><p>Пройдитесь по репертуару и отметьте песни: что хочется услышать обязательно, а что точно нет. Остальное оставляем на наш вкус и опыт</p><div class="guide-options"><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 6"/demo-version/></svg>Хочу</strong>Обязательно услышать</p><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h12"/demo-version/></svg>Можно</strong>Оставьте как есть</p><p><strong><svg class="guide-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/demo-version/></svg>Не надо</strong>Лучше не играть</p></div></div>
-    <section class="repertoire-message" aria-labelledby="repertoire-message-title"><h2 id="repertoire-message-title">Дорогие друзья!</h2><p>Составление репертуара на Ваше мероприятия является частью нашей работы. За многие годы выступлений у нас выработалось понимание и накопленный опыт, как сделать так, чтобы ваше мероприятие было динамичным, душевным, ярким и красочным. Чем больше Вы доверитесь нам в вопросе выбора репертуара, тем лучше будет результат.</p><p class="repertoire-postscript"><strong>P.S. 😊</strong> Если на вашем мероприятии подразумевается алкоголь, то настоятельно рекомендуем перед выбором репертуара принять пару бокалов вина или другого алкогольного напитка, который вам по душе 🍷</p></section>
+    <section class="repertoire-message" aria-labelledby="repertoire-message-title"><h2 id="repertoire-message-title">Дорогие друзья!</h2><p>Составление репертуара на Ваше мероприятия является частью нашей работы. За многие годы выступлений у нас выработалось понимание и накопленный опыт, как сделать так, чтобы ваше мероприятие было динамичным, душевным, ярким и красочным. Чем больше Вы доверитесь нам в вопросе выбора репертуара, тем лучше будет результат.</p><p class="repertoire-recommendation" id="recommendation-note"><svg class="recommendation-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/demo-version/></svg>Для вашего праздника мы рекомендуем композиции из нашего репертуара, в которых особенно тщательно проработаны шоу-элементы и интерактив. Эти песни, по нашему опыту, пользуются особой любовью у зрителей.</p><p class="repertoire-postscript"><strong>P.S. 😊</strong> Если на вашем мероприятии подразумевается алкоголь, то настоятельно рекомендуем перед выбором репертуара принять пару бокалов вина или другого алкогольного напитка, который вам по душе 🍷</p></section>
     <noscript><div class="notice">Для выбора песен нужен JavaScript. Вы можете <a href="/demo-version/#contact">оставить заявку на главной странице</a></div></noscript>
     <div id="load-error" class="notice" hidden>Не удалось открыть список песен. Обновите страницу или <a href="/demo-version/#contact">перейдите к заявке</a></div>
 
@@ -31,7 +31,7 @@
         <h2 id="selection-title">Ваш выбор</h2>
         <dl class="counters" aria-label="Отметки по всему репертуару">
           <div><dt>Хочу</dt><dd id="count-want">0</dd></div>
-          <div><dt>Можно</dt><dd id="count-maybe">89</dd></div>
+          <div><dt>Можно</dt><dd id="count-maybe">110</dd></div>
           <div><dt>Не надо</dt><dd><span id="count-skip">0</span><span class="counter-limit"> / 20</span></dd></div>
         </dl>
         <p id="skip-limit-note" class="skip-limit-note" role="status">«Не надо» можно отметить не больше 20 песен</p>
@@ -56,11 +56,11 @@
   <footer class="page-footer wrap"><a class="footer-home-return" href="/demo-version/"><svg class="ui-icon return-arrow" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/demo-version/></svg>На главную, Станция Мир</a><nav aria-label="Документы и настройки"><a href="/demo-version/legal/privacy.html">Конфиденциальность</a><a href="/demo-version/legal/consent.html">Согласие на обработку данных</a><a href="/demo-version/legal/cookies.html">Cookie</a><button type="button" data-cookie-settings>Настройки cookie</button></nav></footer>
 
   <dialog id="reset-dialog" aria-labelledby="reset-title" aria-describedby="reset-description">
-    <h2 id="reset-title">Сбросить все отметки?</h2><p id="reset-description">Все 89 позиций снова станут «Можно»</p>
+    <h2 id="reset-title">Сбросить все отметки?</h2><p id="reset-description">Все 110 позиций снова станут «Можно»</p>
     <form method="dialog" class="dialog-actions"><button class="button button-outline" value="cancel" autofocus>Оставить выбор</button><button class="button button-yellow" value="reset">Сбросить</button></form>
   </dialog>
   <dialog id="want-all-dialog" aria-labelledby="want-all-title" aria-describedby="want-all-description">
-    <h2 id="want-all-title">Отметить всё как «Хочу»?</h2><p id="want-all-description">Все 89 позиций получат «Хочу». Потом любую отметку можно поменять</p>
+    <h2 id="want-all-title">Отметить всё как «Хочу»?</h2><p id="want-all-description">Все 110 позиций получат «Хочу». Потом любую отметку можно поменять</p>
     <form method="dialog" class="dialog-actions"><button class="button button-outline" value="cancel" autofocus>Оставить как есть</button><button class="button button-yellow" value="want-all">Да, все хочу</button></form>
   </dialog>
 </body>

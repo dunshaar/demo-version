@@ -16,13 +16,13 @@ export function createCatalog(source) {
   if (!Array.isArray(source)) throw new TypeError('Expected a song list');
   const ids = new Set();
   return source.map((song) => {
-    if (!song || !Object.values(GROUPS).includes(song.group) || typeof song.text !== 'string' || !song.text.trim()) {
+    if (!song || !Object.values(GROUPS).includes(song.group) || typeof song.text !== 'string' || !song.text.trim() || ('recommended' in song && typeof song.recommended !== 'boolean')) {
       throw new TypeError('Invalid song');
     }
     const id = stableId(`${song.group}\0${song.text}`);
     if (ids.has(id)) throw new TypeError('Duplicate song identity');
     ids.add(id);
-    return Object.freeze({ id, group: song.group, text: song.text });
+    return Object.freeze({ id, group: song.group, text: song.text, recommended: song.recommended === true });
   });
 }
 

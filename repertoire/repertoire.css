@@ -73,3 +73,7 @@
 @media(max-width:540px){.repertoire-message{padding:6px 0 6px 17px;margin-bottom:26px;font-size:13px}.repertoire-message h2{font-size:20px}}
 
 @media(prefers-reduced-motion:no-preference){.repertoire-disc>span{animation:repertoire-vinyl-spin 14s linear infinite}@keyframes repertoire-vinyl-spin{to{transform:rotate(360deg)}}}
+
+.recommendation-heart{display:inline-block;flex:none;width:16px;height:16px;margin-left:8px;vertical-align:-2px;color:var(--ink)}
+.repertoire-message .repertoire-recommendation{margin-top:20px}
+.repertoire-recommendation .recommendation-heart{margin-left:0;margin-right:8px}
