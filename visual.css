@@ -188,9 +188,8 @@ h2{text-wrap:balance}.hero h1{letter-spacing:-.06em}.hero-intro{max-width:445px}
 /* The repertoire record keeps its continuous motion independently of the site toggle. */
 .motion-paused .repertoire-vinyl-spin{animation-play-state:running!important}
 
-/* On mobile the disc is 1.5 times the preceding version, while its right
-   cut remains at the viewport edge. The SVG reserves room for the whole arc. */
+/* Restore the first vinyl version's mobile scale, including its 460px SVG cap. */
 @media(max-width:540px){
  .repertoire-teaser{row-gap:12px}
- .repertoire-vinyl-art{width:114.705882353%;margin-left:-14.705882353%}
+ .repertoire-vinyl-art{width:min(460px, calc(100% - var(--vinyl-bleed)));margin-left:auto}
 }
