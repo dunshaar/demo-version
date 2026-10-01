@@ -22,7 +22,6 @@ function updateCounts() {
   for (const [id, row] of rows) row.querySelector('[value="skip"]').disabled = counts.skip >= MAX_SKIPPED_SONGS && choices[id] !== 'skip';
   $('#skip-limit-note').textContent = counts.skip >= MAX_SKIPPED_SONGS ? 'Лимит 20 песен. Чтобы исключить другую, снимите одну отметку «Не надо»' : '«Не надо» можно отметить не больше 20 песен';
   $('#reset-open').disabled = counts.want + counts.skip === 0;
-  $('#want-all-open').disabled = counts.want === catalog.length;
   $('#export-preview').value = createTextList(catalog, choices);
 }
 const rows = new Map();
@@ -90,11 +89,11 @@ $('#song-list').addEventListener('change', (event) => {
   updateCounts();
   $('#export-status').textContent = '';
 });
-function applyAll(choice) {
-  choices = Object.fromEntries(catalog.map(({ id }) => [id, choice]));
+function resetSelection() {
+  choices = Object.fromEntries(catalog.map(({ id }) => [id, 'maybe']));
   updateSelection();
   syncControls();
-  $('#export-status').textContent = choice === 'want' ? 'Все 110 позиций отмечены «Хочу». Любую отметку можно изменить' : 'Отметки сброшены. Все песни снова «Можно»';
+  $('#export-status').textContent = 'Отметки сброшены. Все песни снова «Можно»';
 }
 function setupConfirmation(buttonId, dialogId, returnValue, message, action) {
   const button = $(buttonId);
@@ -110,8 +109,7 @@ function setupConfirmation(buttonId, dialogId, returnValue, message, action) {
     $('.selection-summary > a[href="#send-selection"]').focus({ preventScroll: true });
   });
 }
-setupConfirmation('#reset-open', '#reset-dialog', 'reset', 'Сбросить отметки всех 110 песен? Все песни станут «Можно»', () => applyAll('maybe'));
-setupConfirmation('#want-all-open', '#want-all-dialog', 'want-all', 'Отметить все 110 позиций «Хочу»?', () => applyAll('want'));
+setupConfirmation('#reset-open', '#reset-dialog', 'reset', 'Сбросить отметки всех 110 песен? Все песни станут «Можно»', resetSelection);
 $('#download-list').addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob(['\uFEFF', createTextList(catalog, choices)], { type: 'text/plain;charset=utf-8' }));
   const link = document.createElement('a');

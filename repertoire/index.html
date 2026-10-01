@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="/demo-version/assets/logo-ava-512.png?v=20260930-catalog89-icons"><link rel="apple-touch-icon" href="/demo-version/assets/logo-ava-512.png?v=20260930-catalog89-icons">
   <link rel="stylesheet" href="./repertoire.css?v=20261001-artist-order">
   <link rel="stylesheet" href="/demo-version/shared/privacy.css">
-  <script type="module" src="./boot.mjs?v=20261001-artist-order"></script>
+  <script type="module" src="./boot.mjs?v=20261001-no-want-all"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К выбору песен</a>
@@ -37,8 +37,7 @@
         <p id="skip-limit-note" class="skip-limit-note" role="status">«Не надо» можно отметить не больше 20 песен</p>
 
         <a class="button button-yellow" href="#send-selection">К отправке <svg class="ui-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 19 19 5M5 5h14v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/demo-version/></svg></a>
-        <div class="selection-actions"><button class="text-button" id="want-all-open" type="button" disabled>Все хочу</button>
-        <button class="text-button" id="reset-open" type="button" disabled>Сбросить отметки</button></div>
+        <div class="selection-actions"><button class="text-button" id="reset-open" type="button" disabled>Сбросить отметки</button></div>
         <p class="storage-note" id="storage-status">Выбор действует только на открытой странице. После обновления отметки сбросятся</p>
       </aside>
 
@@ -58,10 +57,6 @@
   <dialog id="reset-dialog" aria-labelledby="reset-title" aria-describedby="reset-description">
     <h2 id="reset-title">Сбросить все отметки?</h2><p id="reset-description">Все 110 позиций снова станут «Можно»</p>
     <form method="dialog" class="dialog-actions"><button class="button button-outline" value="cancel" autofocus>Оставить выбор</button><button class="button button-yellow" value="reset">Сбросить</button></form>
-  </dialog>
-  <dialog id="want-all-dialog" aria-labelledby="want-all-title" aria-describedby="want-all-description">
-    <h2 id="want-all-title">Отметить всё как «Хочу»?</h2><p id="want-all-description">Все 110 позиций получат «Хочу». Потом любую отметку можно поменять</p>
-    <form method="dialog" class="dialog-actions"><button class="button button-outline" value="cancel" autofocus>Оставить как есть</button><button class="button button-yellow" value="want-all">Да, все хочу</button></form>
   </dialog>
 </body>
 </html>
